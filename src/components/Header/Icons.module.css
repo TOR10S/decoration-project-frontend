@@ -1,0 +1,62 @@
+.addressInfo {
+  display: none;
+}
+
+.addressList {
+}
+
+.addressLink {
+}
+
+.headerIconItem {
+  display: flex;
+  justify-content: center;
+}
+
+.headerIconLink {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  border: #434455 solid 1.5px;
+  border-radius: 8px;
+
+  transition-property: border-color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.headerIconLink:hover,.headerIconLink:focus {
+  border-color: #9bd0d0;
+}
+
+.headerIconLink:hover .headerLinkIcon, .headerIconLink:focus .headerLinkIcon {
+  fill: #9bd0d0;
+}
+
+.headerLinkIcon {
+  transition-property: fill;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .addressInfo {
+    display: flex;
+  }
+
+  .addressList {
+    display: flex;
+    gap: 12px;
+  }
+}
+
+@media screen and (min-width: 1158px) {
+  .addressInfo {
+    display: flex;
+  }
+
+  .addressList {
+    display: flex;
+    gap: 12px;
+  }
+}
