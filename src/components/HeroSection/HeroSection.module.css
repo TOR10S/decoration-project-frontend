@@ -3,13 +3,15 @@
   max-width: 425px;       
   margin-left: auto;       
   margin-right: auto;      
-  overflow: hidden;
+  overflow: hidden; 
 }
 
 .imgWrapper {
   width: 100%;
   display: flex;
   justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .swiperImg {
@@ -17,4 +19,27 @@
   height: auto;
   display: block;
   object-fit: cover;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+  .swiperWrapper {          
+  max-width: 768px;       
+}
+}
+
+@media screen and (min-width: 1158px) {
+  .swiperWrapper {            
+  max-width: 1600px;       
+}
+}
+
+:global(.swiper-slide) {
+  filter: blur(2px);
+  transition: filter 0.5s ease;
+  opacity: 0.9; 
+}
+
+:global(.swiper-slide-active) {
+  filter: blur(0);
+  opacity: 1;
 }
