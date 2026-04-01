@@ -1,0 +1,66 @@
+.modal{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background-color: #f5f5f5;
+    z-index: 999;
+    transform: translateX(30px);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+    transform 300ms ease,
+    opacity 300ms ease,
+    visibility 300ms ease;
+}
+
+.open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalBtn {
+    background: transparent;
+    border: none;
+}
+
+.modalBtn:hover .modalBtnIcon,.modalBtn:focus .modalBtnIcon{
+    fill: #9bd0d0;
+}
+
+.modalBtnWrapper {
+    margin-left: auto;
+}
+.modalBtnIcon {
+    transition-property: fill;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.2,0,0.2,1);
+}
+.modal-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.modal-nav-list-item {
+}
+.modal-nav-link {
+    transition-property: color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.2,0,0.2,1);
+
+}
+.modal-nav-list-item:hover,.modal-nav-list-item:hover .modal-nav-link {
+    color: #9bd0d0;
+}

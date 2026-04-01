@@ -1,0 +1,39 @@
+.modalIcons {
+        margin-left: auto;
+    margin-right: auto;
+}
+.modalIconsList {
+        display: flex;
+    gap: 24px;
+}
+.modalIconItem {
+        display: flex;
+    justify-content: center;
+}
+.modalIconLink {
+        display: flex;
+    justify-content: center;
+        padding: 4px;
+    border: #434455 solid 1.5px;
+    border-radius: 8px;
+        transition-property: border-color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.2,0,0.2,1);
+}
+.modalLinkIcon {
+        transition-property: fill;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.2,0,0.2,1);
+}
+
+
+.modalIconLink:hover .modalLinkIcon,.modalIconLink:focus .modalLinkIcon {
+   fill: #9bd0d0;
+}
+
+.modalIconLink:hover, .modalIconLink:focus {
+  border-color: #9bd0d0;
+}
+
+
+
