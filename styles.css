@@ -193,7 +193,8 @@ padding-top: 24px;
     transition-timing-function: cubic-bezier(0.2,0,0.2,1);
 }
 .redirect-link-sub:hover,.redirect-link-sub:focus {
-  border-color: #9bd0d0;
+  border-color: #71d1c3;
+  color: #71d1c3;
 }
 .info-text{
     max-width: 100%;
@@ -206,7 +207,15 @@ padding-top: 24px;
     text-align: center;
     max-width: 108px;
     margin: auto;
+    transition-property: color;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.2,0,0.2,1);
 }
+.contact-link:hover, .contact-link:focus {
+    color:  #71d1c3;
+}
+
+
 .img-wrapper {
 
 }
