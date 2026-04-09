@@ -1,0 +1,18 @@
+.footerLogo {
+    max-width: 200px;
+}
+.footerSvg {
+    width: 100%;
+    height: auto;
+}
+.footerLogoWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.footerText {
+    font-size: 12px;
+    color: #b3b3b3;
+}

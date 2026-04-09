@@ -2,7 +2,7 @@ import css from "./Icons.module.css"
 
 export default function Icons() {
   return (
-    <address className={css.addressInfo}>
+    <div className={css.addressInfo}>
         <ul className={css.addressList}>
           <li className={css.headerIconItem}>
             <a href="" className={css.headerIconLink}>
@@ -26,6 +26,6 @@ export default function Icons() {
             </a>
           </li>
       </ul>
-    </address>
+    </div>
   )
 }
