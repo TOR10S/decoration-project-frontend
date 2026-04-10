@@ -9,10 +9,40 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 18px;
     margin-bottom: 24px;
+    flex-wrap: wrap;
 }
 .footerText {
     font-size: 12px;
     color: #b3b3b3;
+}
+
+@media screen and (min-width: 768px) {
+  .footerLogo {
+    max-width: 300px;
+}
+  .footerText {
+    font-size: 16px;
+    color: #b3b3b3;
+}
+}
+
+@media screen and (min-width: 1158px) {
+  .footerLogo {
+    max-width: 300px;
+    margin-right: 20px;
+}
+.footerLogoWrapper {
+
+}
+.footerText {
+    font-size: 16px;
+    color: #b3b3b3;
+    max-width: 200px;
+    margin-left: auto;
+}
+.footerLogoWrapper{
+    flex-wrap: nowrap;
+}
 }

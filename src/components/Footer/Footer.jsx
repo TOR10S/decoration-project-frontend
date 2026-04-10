@@ -12,8 +12,8 @@ export default function Footer() {
         <div className={css.footerLogoWrapper}>
         <img srcSet="/img/Logo-1x.png 1x, /img/Logo-2x.png 2x" src='/img/Logo-1x.png' alt="" className={css.footerLogo} />
         <FooterIcons />
-        </div>
         <p className={css.footerText}>я якийсь дофіга крутий фоп і ось там мій код і тд і рік коли я почала працювати і що ще треба </p>
+        </div>
         </div>
     </footer>
   )
