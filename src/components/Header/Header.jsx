@@ -11,7 +11,7 @@ export default function Header() {
     <div className={clsx(css.headerContainer, "container")}>
       <nav className={css.headerNav}>
         <a href="/" className={css.logo}>
-          <img srcset="/img/Logo-1x.png 1x, /img/Logo-2x.png 2x" width="120" alt="" className={css.logoImg} />
+          <img srcSet="/img/Logo-1x.png 1x, /img/Logo-2x.png 2x" width="120" alt="" className={css.logoImg} />
         </a>
        <NavList/>
       </nav>

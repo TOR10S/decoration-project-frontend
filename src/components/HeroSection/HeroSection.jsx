@@ -7,12 +7,10 @@ const HeroImgs = [{number: 1, alt: "фото-1"}, {number: 2, alt: "фото-2"}
 const DoubleHeroImg = [...HeroImgs, ...HeroImgs]
 export default function HeroSection() {
   return (
-    <section class="hero-section">
-      <div class="container">
-        <h1 class="header-1">Заголовок</h1>
-      <img src="" alt="" />
-    </div>
-    <div  className={css.swiperWrapper}>
+    <section className="hero-section">
+      <div className="container">
+        <h1 className="header-1">Заголовок</h1>
+            <div  className={css.swiperWrapper}>
       <Swiper
   modules={[Autoplay, EffectCoverflow]}
   effect={'coverflow'}
@@ -50,6 +48,8 @@ export default function HeroSection() {
       ))}
     </Swiper>
       </div>
+    </div>
+
     </section>
   )
 }

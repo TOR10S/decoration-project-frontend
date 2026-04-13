@@ -1,0 +1,43 @@
+.imgAbout {
+    border-radius: 6px;
+    max-width: 100%;
+}
+.aboutWrapper {
+display: flex;
+gap: 24px;
+flex-direction: column;
+}
+.aboutList {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+.imgAbout{
+    max-width: 30%;
+}
+.aboutWrapper {
+    flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 20px;
+}
+.aboutList {
+    gap: 20px;
+}
+}
+
+@media screen and (min-width: 1158px) {
+.imgAbout{
+    max-width: 30%;
+}
+.aboutWrapper {
+    flex-direction: row;
+justify-content: space-between;
+align-items: center;
+padding: 0px 20px;
+}
+.aboutList {
+    gap: 20px;
+}
+}
