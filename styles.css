@@ -43,6 +43,12 @@ span {
     color: #2e2f42;
 }
 
+.active {
+  color: #9bd0d0;
+  font-weight: 600;
+}
+
+
 .container {
     max-width: 360px;
     padding-left: 12px;

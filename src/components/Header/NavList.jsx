@@ -1,13 +1,14 @@
+import { NavLink } from "react-router-dom"
 import css from "./NavList.module.css"
 
 export default function NavList() {
     return (
         <ul className={css.navList}>
       <li className={css.navLink}>
-        <a href="">Головна</a>
+        <NavLink to="/">Головна</NavLink>
       </li>
       <li className={css.navLink}>
-        <a href="">Каталог</a>
+        <NavLink to="/portfolio">Каталог</NavLink>
       </li>
         </ul>
     )

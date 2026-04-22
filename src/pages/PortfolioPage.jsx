@@ -1,70 +1,98 @@
+import React, { useEffect, useState, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getPortfolio } from "../redux/portfolioSlice";
 
-import React, { useEffect, useState } from 'react'
-import PortfolioList from '../components/PortfolioLibrarySection/PortfolioList';
-import { fetchPortfolioData, fetchPortfolioFilteredData } from '../portfolio-api';
+import PortfolioList from "../components/PortfolioLibrarySection/PortfolioList";
+import PortfolioFilters from "../components/PortfolioLibrarySection/PortfolioFilters";
+import Pagination from "../components/PortfolioLibrarySection/Pagination";
+import PhotoModal from "../components/PortfolioLibrarySection/PhotoModal";
+
 export default function PortfolioPage() {
-  const [typeOfDecoration, setTypeOfDecoration] = useState("");
+  const dispatch = useDispatch();
+  const { items = [], isLoading, error, filterType } = useSelector((state) => state.portfolio);
+
+  const [typeOfDecoration, setTypeOfDecoration] = useState(filterType || "");
   const [theme, setTheme] = useState("");
   const [colors, setColors] = useState("");
-    const [portfolio, setPortfolio] = useState([])
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-    async function fetchPortfolioFiltered () {try {
-          setPortfolio([]);
-          setLoading(true)
-          setError(false);
-      const response = await fetchPortfolioFilteredData(typeOfDecoration, theme, colors)
-      setPortfolio(response)
-      
-    localStorage.setItem("portfolio", JSON.stringify(response));
-    } catch (err) {
-      setError(true)
-    } 
-    finally {
-      setLoading(false)
-    }
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+  const [selectedItem, setSelectedItem] = useState(null);
 
+  useEffect(() => {
+    if (!items || items.length === 0) {
+      dispatch(getPortfolio());
     }
-    useEffect(() => {
-       const savedPortfolio = localStorage.getItem("portfolio");
+  }, [dispatch, items]);
 
-  if (savedPortfolio) {
-    setPortfolio(JSON.parse(savedPortfolio));
-    return; 
-  }
-        async function fetchPortfolio() {
-          try {
-          setLoading(true)
-      const response = await fetchPortfolioData()
-      setPortfolio(response)
-      
-    localStorage.setItem("portfolio", JSON.stringify(response));
-    } catch (err) {
-      setError(true)
-    } 
-    finally {
-      setLoading(false)
-    }
-    }
-fetchPortfolio()
 
-  }, []);
-  console.log(portfolio);
-  
+  const filteredPortfolio = useMemo(() => {
+    if (!Array.isArray(items)) return [];
+
+    return items.filter((item) => {
+
+      const matchType = !typeOfDecoration || 
+        item.typeOfDecorations?.toLowerCase().trim() === typeOfDecoration.toLowerCase().trim();
+
+
+      const matchTheme = !theme || 
+        item.theme?.toLowerCase().includes(theme.toLowerCase().trim());
+
+
+      const matchColors = !colors || 
+        item.colors?.toLowerCase().includes(colors.toLowerCase().trim());
+
+      return matchType && matchTheme && matchColors;
+    });
+  }, [items, typeOfDecoration, theme, colors]);
+
+  const totalPages = Math.ceil(filteredPortfolio.length / itemsPerPage) || 1;
+
+  const currentItems = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredPortfolio.slice(start, start + itemsPerPage);
+  }, [filteredPortfolio, currentPage]);
+
+
+  const handleSearch = () => {
+    setCurrentPage(1);
+  };
+
   return (
-    <section>
-        <label htmlFor="typeOfDecoration">Оберіть тип</label>
-            <select  onChange={(e) => setTypeOfDecoration(e.target.value)} name="typeOfDecoration" id="typeOfDecoration">
-                <option value="Фотозона"></option>
-                <option value="Диво куля"></option>
-                <option value="Гендер-паті"></option>
-            </select>
-            <input type="text" placeholder='Червоний' onChange={(e) => setColors(e.target.value)} />
-            <input type="text" placeholder='День народження' onChange={(e) => setTheme(e.target.value)}/>
-            <button onClick={fetchPortfolioFiltered}>пошук</button>
-             {portfolio.length >0 && <PortfolioList portfolio={portfolio}/>} 
-             {loading && <p>Завантаження</p>}
-             {error && <p>Щось пішло не так </p>}
+    <section className="portfolio-section">
+      <div className="container">
+        <PortfolioFilters
+          typeValue={typeOfDecoration}
+          setTypeOfDecoration={(val) => { setTypeOfDecoration(val); setCurrentPage(1); }}
+          setColors={setColors}
+          setTheme={setTheme}
+          onSearch={handleSearch}
+        />
+
+        {isLoading && <p>Завантаження...</p>}
+        {error && <p>Помилка: {error}</p>}
+
+        {!isLoading && !error && (
+          <>
+            {filteredPortfolio.length > 0 ? (
+              <PortfolioList portfolio={currentItems} onItemClick={setSelectedItem} />
+            ) : (
+              <p style={{textAlign: 'center', marginTop: '20px'}}>За вашим запитом нічого не знайдено</p>
+            )}
+
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            )}
+          </>
+        )}
+
+        {selectedItem && (
+          <PhotoModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+        )}
+      </div>
     </section>
-  )
+  );
 }

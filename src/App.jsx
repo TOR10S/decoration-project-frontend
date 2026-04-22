@@ -1,24 +1,21 @@
 import './App.css'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header/Header.jsx'
-import HeroSection from './components/HeroSection/HeroSection.jsx'
-import PortfolioSection from './components/PortfolioSection/PortfolioSection.jsx'
-import AboutSection from './components/AboutSection/AboutSection.jsx'
-import ContactSection from './components/ContactSection/ContactSection.jsx'
 import Footer from './components/Footer/Footer.jsx'
+import MainPage from './pages/MainPage.jsx'
 import PortfolioPage from './pages/PortfolioPage.jsx'
 function App() {
   return (
-    <>
+     <div>
       <Header />
-      <main>
-      <HeroSection />
-      <PortfolioSection />
-      <AboutSection />
-      <ContactSection />
-      </main>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+      </Routes>
       <Footer />
-      <PortfolioPage />
-    </>
+    </div>
+    
+      
   )
 }
 

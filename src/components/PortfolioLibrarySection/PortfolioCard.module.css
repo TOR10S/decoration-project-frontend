@@ -1,0 +1,31 @@
+.cardWrapper{
+    padding: 6px;
+    border-radius: 8px;
+    background-color: #f5f2f2;
+    width: 100%;
+}
+
+.cardTheme{
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+.cardColors{
+    font-size: 16px;
+    font-weight: 400;
+}
+.img{
+    border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1157px) {
+    .cardWrapper {
+        width: 240px;
+    }
+
+}
+
+@media screen and (min-width: 1158px) {
+    .cardWrapper {
+        width: 370px;
+    }
+}
