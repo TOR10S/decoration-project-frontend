@@ -11,7 +11,7 @@ export default function PortfolioCard({ theme, colors, images, onClick }) {
   return (
     <li className={css.cardItem} onClick={onClick}>
       <div className={css.cardWrapper}>
-        <img src={previewImage} alt={theme} className={css.cardImage} />
+        <img src={previewImage} alt={theme} className={css.img} />
         <h2 className={css.cardTheme}>{theme}</h2>
         <p className={css.cardColors}>{colors}</p>
       </div>

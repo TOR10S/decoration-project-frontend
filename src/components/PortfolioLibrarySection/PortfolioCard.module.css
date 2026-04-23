@@ -3,6 +3,7 @@
     border-radius: 8px;
     background-color: #f5f2f2;
     width: 100%;
+    cursor: pointer;
 }
 
 .cardTheme{

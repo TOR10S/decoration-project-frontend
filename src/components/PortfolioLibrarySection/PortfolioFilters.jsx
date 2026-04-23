@@ -1,34 +1,41 @@
 import React from 'react';
 import css from "./PortfolioFilters.module.css";
 
-export default function PortfolioFilters({ 
-  typeValue, 
-  colorValue, 
-  themeValue, 
-  setTypeOfDecoration, 
-  setColors, 
-  setTheme, 
-  onSearch 
+export default function PortfolioFilters({
+  typeValue,
+  colorValue,
+  themeValue,
+  setTypeOfDecoration,
+  setColors,
+  setTheme,
+  onSearch
 }) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch();
+  };
+
   return (
-    <div className={css.portfolioFilters}>
+    <form className={css.portfolioFilters} onSubmit={handleSubmit}>
       <p>Оберіть фільтри</p>
+
       <div className={css.portfolioFiltersWrapper}>
-        <select 
-          id='typeOfDecoration' 
-          value={typeValue} 
-          onChange={(e) => setTypeOfDecoration(e.target.value)} 
+
+        <select
+          id="typeOfDecoration"
+          value={typeValue}
+          onChange={(e) => setTypeOfDecoration(e.target.value)}
           className={css.inputField}
         >
           <option value="">Всі</option>
-
           <option value="Фотозона">Фотозона</option>
           <option value="Диво куля">Диво куля</option>
-          <option value="Гендер паті">Гендер-паті</option>
+          <option value="Гендер-паті">Гендер-паті</option>
         </select>
 
         <input
-          id='color'
+          id="color"
           className={css.inputField}
           type="text"
           value={colorValue}
@@ -37,25 +44,22 @@ export default function PortfolioFilters({
         />
 
         <input
-          id='theme'
+          id="theme"
           className={css.inputField}
           type="text"
-          value={themeValue} 
+          value={themeValue}
           placeholder="Тематика (напр. День народження)"
           onChange={(e) => setTheme(e.target.value)}
         />
+
       </div>
 
-      <button 
-        type="button" 
-        onClick={(e) => {
-          e.preventDefault();
-          onSearch();
-        }} 
+      <button
+        type="submit"
         className={css.searchBtn}
       >
         Пошук
       </button>
-    </div>
+    </form>
   );
 }

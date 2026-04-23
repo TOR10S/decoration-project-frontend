@@ -6,7 +6,7 @@ export const getPortfolio = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await fetchPortfolioData();
-      return data; 
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -19,7 +19,7 @@ const portfolioSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
-    filterType: "", 
+    filterType: "",
   },
   reducers: {
     setFilterType: (state, action) => {
@@ -30,11 +30,14 @@ const portfolioSlice = createSlice({
     builder
       .addCase(getPortfolio.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getPortfolio.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
+
+        state.items = Array.isArray(action.payload?.data)
+          ? action.payload.data
+          : [];
       })
       .addCase(getPortfolio.rejected, (state, action) => {
         state.isLoading = false;
